@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple OS</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #2e2e2e;
+color: white;
+margin: 0;
+padding: 0;
+}
+#menu-bar {
+background-color: #007acc;
+padding: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+#menu-bar button {
+background-color: #007acc;
+border: none;
+color: white;
+padding: 10px 20px;
+cursor: pointer;
+font-size: 16px;
+}
+#desktop {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: calc(100vh - 50px);
+}
+.app-button {
+background-color: #007acc;
+border: none;
+color: white;
+padding: 20px;
+margin: 10px;
+font-size: 18px;
+cursor: pointer;
+width: 200px;
+text-align: center;
+}
+#battery-status {
+position: absolute;
+bottom: 10px;
+left: 10px;
+}
+</style>
+</head>
+<body>
+
+<div id="menu-bar">
+<div>
+<button onclick="openApp('notepad')">Open Notepad</button>
+<button onclick="openApp('calculator')">Open Calculator</button>
+<button onclick="openApp('browser')">Open Browser</button>
+<button onclick="openNetwork()">Open Network</button>
+<button onclick="openApp('terminal')">Open Terminal</button>
+<button onclick="openApp('explorer')">Open File Explorer</button>
+</div>
+<button onclick="closeOS()">Exit</button>
+</div>
+
+<div id="desktop">
+<button class="app-button" onclick="openApp('notepad')">Notepad</button>
+<button class="app-button" onclick="openApp('calculator')">Calculator</button>
+<button class="app-button" onclick="openApp('browser')">Browser</button>
+<button class="app-button" onclick="openNetwork()">Network</button>
+<button class="app-button" onclick="openApp('terminal')">Terminal</button>
+<button class="app-button" onclick="openApp('explorer')">File Explorer</button>
+<button class="app-button" onclick="openSettings()">Settings</button>
+</div>
+
+<div id="battery-status">Battery: 100%</div>
+
+<script>
+function openApp(app) {
+alert(app + " application opened.");
+// Here you can implement the functionality or open a new window or modal for each app
+}
+
+function openNetwork() {
+window.open('https://www.google.com', '_blank');
+}
+
+function closeOS() {
+alert("Exiting Simple OS...");
+window.close();
+}
+
+function openSettings() {
+alert("Settings opened.");
+// You can implement settings modal here
+}
+
+// Battery status simulation (In a real scenario, you would need backend interaction)
+function updateBatteryStatus() {
+const batteryStatus = document.getElementById('battery-status');
+batteryStatus.innerText = "Battery: " + Math.floor(Math.random() * 100) + "%";
+}
+
+setInterval(updateBatteryStatus, 60000);
+</script>
+</body>
+</html>
